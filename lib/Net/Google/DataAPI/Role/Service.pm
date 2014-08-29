@@ -136,10 +136,16 @@ sub prepare_request {
     $method = $args->{content} || $args->{parts} ? 'POST' : 'GET' unless $method;
     my $uri = URI->new($args->{uri});
     my @existing_query = $uri->query_form;
+    my %querys = %{$args->{query}};
+    if ($args->{uri} eq "https://spreadsheets.google.com/feeds/spreadsheets/private/full" ){
+        #key parameterが含まれるとダメ
+        delete $querys{key};
+    }
+
     $uri->query_form(
         {
-            @existing_query, 
-            %{$args->{query}}
+            @existing_query,
+            %querys,
         }
     ) if $args->{query};
     my $req = HTTP::Request->new($method => "$uri");
