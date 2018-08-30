@@ -1,3 +1,4 @@
+use lib '.';
 use inc::Module::Install;
 name 'Net-Google-DataAPI';
 all_from 'lib/Net/Google/DataAPI.pm';
