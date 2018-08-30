@@ -8,6 +8,8 @@ use HTTP::Response;
 use URI;
 
 BEGIN {
+    eval "use Net::OAuth";
+    plan skip_all => "Net::OAuth required for testing POD" if $@;
     use_ok 'Net::Google::DataAPI::Auth::OAuth';
 }
 
