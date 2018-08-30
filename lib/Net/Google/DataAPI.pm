@@ -1,14 +1,14 @@
 package Net::Google::DataAPI;
 use 5.008001;
-use Any::Moose;
-use Any::Moose '::Exporter';
+use Moose;
+use Moose::Exporter;
 use Carp;
 use Lingua::EN::Inflect::Number qw(to_PL);
 use XML::Atom;
 use Class::Load;
 our $VERSION = '0.2805';
 
-any_moose('::Exporter')->setup_import_methods(
+Moose::Exporter->setup_import_methods(
     as_is => ['feedurl', 'entry_has'],
 );
 
@@ -42,7 +42,7 @@ sub feedurl {
 
     my $attr_name = "${name}_feedurl";
 
-    my $class_meta = any_moose('::Meta::Class')->initialize($class);
+    my $class_meta = Moose::Meta::Class->initialize($class);
     $class_meta->add_attribute(
         $attr_name => (
             isa => 'Str',
@@ -140,7 +140,7 @@ sub entry_has {
     my ($name, %args) = @_;
 
     my $class = caller;
-    my $class_meta = any_moose('::Meta::Class')->initialize($class);
+    my $class_meta = Moose::Meta::Class->initialize($class);
     $class_meta->does_role('Net::Google::DataAPI::Role::Entry') 
         or confess 'Net::Google::DataAPI::Role::Entry required to use entry_has';
 
@@ -206,8 +206,8 @@ sub entry_has {
 }
 
 __PACKAGE__->meta->make_immutable;
-no Any::Moose;
-no Any::Moose '::Exporter';
+no Moose;
+no Moose::Exporter;
 
 1;
 __END__
@@ -219,7 +219,7 @@ Net::Google::DataAPI - Base implementations for modules to negotiate with Google
 =head1 SYNOPSIS
 
   package MyService;
-  use Any::Moose;
+  use Moose;
   use Net::Google::DataAPI;
 
   with 'Net::Google::DataAPI::Role::Service';
@@ -253,7 +253,7 @@ Net::Google::DataAPI - Base implementations for modules to negotiate with Google
   1;
 
   package MyEntry;
-  use Any::Moose;
+  use Moose;
   use Net::Google::DataAPI;
   with 'Net::Google::DataAPI::Role::Entry';
 

@@ -8,7 +8,7 @@ use HTTP::Response;
 
 {
     package MyService;
-    use Any::Moose;
+    use Moose;
     use Net::Google::AuthSub;
     use Net::Google::DataAPI::Auth::AuthSub;
     with 'Net::Google::DataAPI::Role::Service';

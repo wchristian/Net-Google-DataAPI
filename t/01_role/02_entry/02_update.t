@@ -7,7 +7,7 @@ use HTTP::Response;
 
 {
     package MyEntry;
-    use Any::Moose;
+    use Moose;
     use Net::Google::DataAPI;
     with 'Net::Google::DataAPI::Role::Entry';
     use XML::Atom::Util qw(textValue);
@@ -37,7 +37,7 @@ use HTTP::Response;
 }
 {
     package MyService;
-    use Any::Moose;
+    use Moose;
     use Net::Google::DataAPI;
     with 'Net::Google::DataAPI::Role::Service';
 

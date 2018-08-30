@@ -1,5 +1,5 @@
 package Net::Google::DataAPI::Auth::OAuth2;
-use Any::Moose;
+use Moose;
 use Net::Google::DataAPI::Types;
 with 'Net::Google::DataAPI::Role::Auth';
 use Net::OAuth2::Client;
@@ -89,7 +89,7 @@ sub sign_request {
 }
 
 __PACKAGE__->meta->make_immutable;
-no Any::Moose;
+no Moose;
 
 1;
 __END__

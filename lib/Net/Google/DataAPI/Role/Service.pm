@@ -1,5 +1,5 @@
 package Net::Google::DataAPI::Role::Service;
-use Any::Moose '::Role';
+use Moose::Role;
 use Carp;
 use LWP::UserAgent;
 use URI;
@@ -231,7 +231,7 @@ sub delete {
     return $res;
 }
 
-no Any::Moose '::Role';
+no Moose::Role;
 
 1;
 
@@ -246,7 +246,7 @@ Net::Google::DataAPI::Role::Service - provides base functionalities for Google D
 =head1 SYNOPSIS
 
     package MyService;
-    use Any::Moose;
+    use Moose;
     use Net::Google::DataAPI;
     with 'Net::Google::DataAPI::Role::Service' => {
         service => 'wise',
